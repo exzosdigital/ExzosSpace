@@ -1,128 +1,81 @@
-# 🚀 ExzosSpace
+# ExzosSpace
 
-Hub central para desenvolvimento, documentação e gestão dos projetos SaaS da Exzos Digital.
+ExzosSpace é o componente central de documentação, memória e base de conhecimento do ecossistema ExzosVerse. Ele funciona como o "cérebro" do sistema, conectando todos os módulos e fornecendo contexto, memória e validação.
 
-## 📋 Visão Geral
+## Visão Geral
 
-ExzosSpace é o ponto central para todas as aplicações SaaS desenvolvidas pela Exzos. Este espaço serve como:
+O ExzosSpace integra cinco pilares fundamentais:
 
-- **Repositório Central** - Hub para código, documentação e recursos compartilhados
-- **Centro de Documentação** - Padrões, guias e melhores práticas de desenvolvimento
-- **Sistema de Gestão** - Acompanhamento de projetos, issues e milestones
-- **Colaboração** - Ambiente para trabalho em equipe e compartilhamento de conhecimento
+1. **Base de Conhecimento Estruturada** - Ontologia MECE com vetorização semântica
+2. **Sistema de Memória Dinâmica** - Blocos de memória para agentes com capacidade de reflexão
+3. **Biblioteca de Contexto** - Framework RAG com reranking contextual
+4. **Motor de Documentação** - Formato ReadMe.LLM otimizado para LLMs
+5. **Camada de Integração** - Conectores universais e APIs bidirecionais
 
-## 🏗️ Arquitetura
-
-Nossa arquitetura SaaS é baseada em:
-
-- **Frontend**: Next.js, React, Tailwind CSS
-- **Backend**: Node.js, NestJS, tRPC
-- **Banco de Dados**: Supabase, PostgreSQL
-- **Infraestrutura**: Vercel, Docker, GitHub Actions
-- **Autenticação**: Supabase Auth, NextAuth.js
-- **Monitoramento**: Sentry, LogRocket
-
-## 🌐 Aplicações
-
-| Aplicação | Descrição | Status | URL |
-|-----------|-----------|--------|-----|
-| Midday | Plataforma de gestão de negócios | Em desenvolvimento | [midday.ai](https://midday.ai) |
-| ExzosAuth | Sistema de autenticação centralizado | Planejado | TBD |
-| ExzosPayments | Processamento de pagamentos | Planejado | TBD |
-| ExzosAnalytics | Análise de dados e relatórios | Planejado | TBD |
-
-## 📁 Estrutura do Repositório
+## Estrutura do Repositório
 
 ```
-ExzosSpace/
-├── apps/                  # Aplicações SaaS
-│   ├── midday/            # Midday - Gestão de Negócios
-│   ├── auth/              # ExzosAuth - Autenticação
-│   └── ...                # Outras aplicações
-├── packages/              # Pacotes compartilhados
-│   ├── ui/                # Biblioteca de UI
-│   ├── config/            # Configurações compartilhadas
-│   ├── api/               # Clientes de API
-│   └── ...
-├── infrastructure/        # Configuração de infraestrutura
-│   ├── docker/            # Configurações Docker
-│   ├── github-actions/    # Workflows CI/CD
-│   └── vercel/            # Configurações Vercel
-├── docs/                  # Documentação
-│   ├── architecture/      # Documentação de arquitetura
-│   ├── api/               # Documentação de API
-│   ├── guides/            # Guias para desenvolvedores
-│   └── standards/         # Padrões de código
-└── scripts/               # Scripts utilitários
+exzosspace/
+├── docs/
+│   ├── architecture/       # Documentos de arquitetura e visão geral
+│   ├── implementation/     # Guias técnicos de implementação
+│   ├── modules/            # Documentação de módulos específicos
+│   │   ├── horizon/        # ExzosHorizon (copilot e automação)
+│   │   ├── nebula/         # ExzosNebula (infraestrutura)
+│   │   ├── ui-ux/          # Design system e UI
+│   │   └── exzosgen/       # Automação e agentes
+│   └── agents/             # Documentação de agentes
+├── examples/               # Exemplos de código e integrações
+└── schemas/                # Esquemas e modelos de dados
 ```
 
-## 🚀 Deploy Automático
+## Componentes Relacionados
 
-Utilizamos GitHub Actions e Vercel para automação de deploy:
+ExzosSpace integra-se com todos os outros componentes do ecossistema ExzosVerse:
 
-- **Ambientes de Desenvolvimento**: Previews automáticos para cada PR
-- **Staging**: Deploy automático para branch `staging`
-- **Produção**: Deploy após aprovação para branch `main`
+- **ExzosHorizon** - Copilot de desenvolvimento frontend/backend
+- **ExzosNebula** - Backend seguro multi-tenant baseado em Supabase
+- **ExzosNexus** - Camada universal de integração MCP
+- **ExzosVision** - UI Kit premium e componentes visuais
+- **ExzosCloud** - Plataforma de infraestrutura e deploy
 
-## 🧩 Integração com Supabase
+## Integração e Uso
 
-Nosso stack SaaS é profundamente integrado com o Supabase:
+Para utilizar o ExzosSpace em seus projetos:
 
-- **Autenticação**: Login social, MFA, gerenciamento de usuários
-- **Banco de Dados**: PostgreSQL com Row Level Security (RLS)
-- **Armazenamento**: Upload e gerenciamento de arquivos
-- **Edge Functions**: Funções serverless para lógica de backend
-- **Realtime**: Funcionalidades em tempo real via WebSockets
+```typescript
+import { ExzosSpace } from '@exzos/space';
 
-## 📊 Monitoramento e Análise
+// Criar contexto para desenvolvimento
+const context = await ExzosSpace.createContext({
+  technologies: ['react', 'next.js', 'tailwind'],
+  patterns: ['atomic-design', 'custom-hooks'],
+  projectId: 'customer-portal'
+});
 
-Utilizamos as seguintes ferramentas para monitoramento:
+// Recuperar documentação relevante
+const docs = await ExzosSpace.search('autenticação OAuth com Supabase');
 
-- **Sentry**: Rastreamento de erros e performance
-- **LogRocket**: Reprodução de sessões de usuário
-- **Vercel Analytics**: Métricas de performance web
-- **PostgreSQL Insights**: Análise de performance do banco de dados
+// Armazenar informação importante
+await ExzosSpace.store({
+  type: 'archival',
+  content: {
+    topic: "Implementação de autenticação",
+    solution: "Uso de OAuth com GitHub e Google",
+    context: "Projeto ExzosCommerce"
+  },
+  tags: ['auth', 'oauth', 'security']
+});
+```
 
-## 🧪 Testes
+## Documentação
 
-Nossa estratégia de testes inclui:
+Para mais informações, consulte:
 
-- **Testes Unitários**: Jest, React Testing Library
-- **Testes E2E**: Playwright
-- **Testes de Integração**: Supertest
-- **Testes de API**: Insomnia, Postman
+- [Visão Geral da Arquitetura](docs/architecture/exzosverse-ecosystem.md)
+- [Guia de Implementação](docs/implementation/exzosspace-guide.md)
+- [Integração com Agentes](docs/modules/horizon/boilerplates.md)
 
-## 🔄 Fluxo de Trabalho
+## Licença
 
-1. **Issues**: Todas as tarefas começam como issues no GitHub
-2. **Branches**: Criar branch baseada na issue (`feature/123-nome-da-feature`)
-3. **Pull Requests**: Abrir PR para `staging` com revisão de código
-4. **CI/CD**: Testes automatizados e deploy de preview
-5. **Merge**: Após aprovação, merge para `staging` e depois para `main`
-
-## 📚 Documentação
-
-Toda a documentação está disponível em:
-
-- **Código**: Comentários JSDoc/TSDoc no código
-- **README**: Documentação específica de cada pacote/app
-- **Wiki**: Documentação mais detalhada na wiki do GitHub
-- **Storybook**: Documentação interativa dos componentes de UI
-
-## 👥 Contribuição
-
-Para contribuir com este repositório:
-
-1. Familiarize-se com nossos [padrões de código](./docs/standards/)
-2. Verifique as [issues abertas](https://github.com/exzosdigital/ExzosSpace/issues)
-3. Faça fork do repositório e crie uma branch para sua feature
-4. Envie um PR com descrição clara das alterações
-
-## 📞 Contato
-
-- **Email**: [desenvolvimento@exzos.com.br](mailto:desenvolvimento@exzos.com.br)
-- **Website**: [exzos.com.br](https://exzos.com.br)
-
----
-
-© 2025 Exzos Digital. Todos os direitos reservados.
+MIT © ExzosDigital
